@@ -11,6 +11,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using ChoreTracker.Models;
 
 namespace ChoreTracker
 {
@@ -28,10 +30,8 @@ namespace ChoreTracker
         {
 
             services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "ChoreTracker", Version = "v1" });
-            });
+
+            services.AddDbContext<ChoreContext>(opt => opt.UseInMemoryDatabase("ChoreList"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,8 +40,7 @@ namespace ChoreTracker
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ChoreTracker v1"));
+
             }
 
             app.UseHttpsRedirection();
