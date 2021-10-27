@@ -13,5 +13,6 @@ namespace ChoreTracker.Models
         }
 
         public DbSet<Chore> Chores { get; set; }
+        //public DbSet<OutsideChore> Chores { get; set; }
     }
 }
