@@ -32,6 +32,7 @@ namespace ChoreTracker
             services.AddControllers();
 
             services.AddDbContext<ChoreContext>(opt => opt.UseInMemoryDatabase("ChoreList"));
+            services.AddDbContext<OutsideChoresContext>(opt => opt.UseInMemoryDatabase("OutsideChoresList"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

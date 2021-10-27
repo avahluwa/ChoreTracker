@@ -80,7 +80,8 @@ namespace ChoreTracker.Controllers
             _context.Chores.Add(chore);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetChore", new { id = chore.Id }, chore);
+            return CreatedAtAction(nameof(GetChore), new { id = chore.Id }, chore);
+
         }
 
         // DELETE: api/Chores/5
