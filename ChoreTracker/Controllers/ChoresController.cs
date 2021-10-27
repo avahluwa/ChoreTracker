@@ -15,7 +15,7 @@ namespace ChoreTracker.Controllers
     {
         private readonly ChoreContext _context;
 
-        public ChoresController(ChoreContext context)
+        public ChoresController(ChoreContext context, OutsideChoresContext context2)
         {
             _context = context;
         }
@@ -24,6 +24,11 @@ namespace ChoreTracker.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Chore>>> GetChores()
         {
+
+            //in progress
+            //List<Chore> chores  = await _context.Chores.ToListAsync();
+            //List<OutsideChores> outsidechores = await _context.OutsideChores.ToListAsync();
+
             return await _context.Chores.ToListAsync();
         }
 
