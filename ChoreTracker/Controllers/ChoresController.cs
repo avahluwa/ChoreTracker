@@ -22,14 +22,18 @@ namespace ChoreTracker.Controllers
 
         // GET: api/Chores
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Chore>>> GetChores()
+        public async Task<ActionResult<DTO>> GetChores()
         {
 
-            //in progress
-            //List<Chore> chores  = await _context.Chores.ToListAsync();
-            //List<OutsideChores> outsidechores = await _context.OutsideChores.ToListAsync();
+            //in progress 10/27/2021
+            List<Chore> chores  = await _context.Chores.ToListAsync();
+            List<OutsideChores> outsidechores = await _context.OutsideChores.ToListAsync();
 
-            return await _context.Chores.ToListAsync();
+            var dto = new DTO();
+            dto.Chores = chores;
+            dto.outsideChores = outsidechores;
+
+            return dto;
         }
 
         // GET: api/Chores/5
